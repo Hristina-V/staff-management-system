@@ -1,0 +1,19 @@
+[
+  {
+    "Id": 55,
+    "Name": "Joseph Josephson",
+    "StartDate": "1980-05-20",
+    "Department": "IT",
+    "Role": "Junior Developer",
+    "Salary": 2000.15
+  },
+  {
+    "Id": 45,
+    "Name": "John Doe",
+    "StartDate": "1995-06-27",
+    "Department": "Finance",
+    "Role": "Accountant",
+    "Salary": 1500.50,
+    "IsActive": false
+  }
+]
