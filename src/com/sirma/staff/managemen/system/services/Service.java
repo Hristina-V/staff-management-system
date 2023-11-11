@@ -94,7 +94,7 @@ public class Service<T extends BaseEntity> {
      */
     private int generateId() {
         do {
-            int id = random.nextInt();
+            int id = Math.abs(random.nextInt());
             List<T> all = findAll();
             final int tempIdCopy = id; // it's required by stream, so that we can filter
             long idRepeatsCount = all.stream().filter(x -> x.getId() == tempIdCopy).count();

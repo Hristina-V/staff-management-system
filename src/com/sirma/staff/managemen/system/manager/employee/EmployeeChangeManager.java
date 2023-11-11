@@ -39,12 +39,12 @@ public class EmployeeChangeManager extends StaffManager {
                     System.out.println("Please provide new position: ");
                     String newRole = scanner.nextLine();
 
-                    employee.setDepartment(newRole);
+                    employee.setRole(newRole);
                     service.update(employee);
                } else if ("4".equals(userSelection)) {
                     Employee employee = readEmployee(scanner);
                     System.out.println("Current employee start date is: " + employee.getStartDate());
-                    LocalDate newStartDate = readLocalDate(scanner, "dd/mm/yyyy", "new start date");
+                    LocalDate newStartDate = readLocalDate(scanner, "dd/MM/yyyy", "new start date");
 
                     employee.setStartDate(newStartDate);
                     service.update(employee);
@@ -87,6 +87,7 @@ public class EmployeeChangeManager extends StaffManager {
      }
 
      private Employee readEmployee(Scanner scanner) {
+          System.out.println("Please enter employee ID: ");
           int id = Integer.parseInt(scanner.nextLine());
 
           try {

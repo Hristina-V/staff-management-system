@@ -1,7 +1,8 @@
 package com.sirma.staff.managemen.system.repositories.csv;
 
+import com.sirma.staff.managemen.system.repositories.FileReader;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Map;
 import static com.sirma.staff.managemen.system.repositories.FileConstants.CSV_DELIMITER;
 
 
-public abstract class CsvFileReader<T> {
+public abstract class CsvFileReader<T> extends FileReader {
 
     protected String fileName;
 
@@ -27,10 +28,10 @@ public abstract class CsvFileReader<T> {
      * Before parsing entities header row of CSV file is validated against the expected labels - provided again through the constructor.
      * @return List of Generic entities. Type of entity is provided by the concrete child class.
      */
-    public List<T> readListOfEntitiesFromFile() {
+    public List<T> readFromFile() {
         List<T> allItems = new ArrayList<T>();
 
-        try (BufferedReader in = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader in = new BufferedReader(new java.io.FileReader(fileName))) {
             //first line is the header line - so we would like to skip it.
             String headerRow = in.readLine();
             if (headerRow == null) {

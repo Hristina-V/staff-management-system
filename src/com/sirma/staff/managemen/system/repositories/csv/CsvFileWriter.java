@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-public abstract class CsvFileWriter<T> {
+public abstract class CsvFileWriter<T> extends com.sirma.staff.managemen.system.repositories.FileWriter<T> {
 
     private String fileName;
     private Map<Integer, String> fileHeaderLabels;
@@ -17,7 +17,7 @@ public abstract class CsvFileWriter<T> {
     }
 
 
-    public void overrideCsvFile(List<T> entities) {
+    public void writeToFile(List<T> entities) {
         try(FileWriter writer = new FileWriter(fileName);
             PrintWriter printWriter = new PrintWriter(writer)) {
 
@@ -26,10 +26,6 @@ public abstract class CsvFileWriter<T> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void overrideCsvFile(T entity) {
-        overrideCsvFile(List.of(entity));
     }
 
     public void appendToCsvFile(List<T> entities) {
@@ -53,5 +49,4 @@ public abstract class CsvFileWriter<T> {
     }
 
     protected abstract String convertItemToCsvRow(T item);
-
 }

@@ -23,6 +23,7 @@ public class EmployeeDisplayManager extends StaffManager {
                 print(employees);
             } else if ("3".equals(userSelection)) {
                 String department = scanner.nextLine();
+                System.out.println("Enter department name: ");
                 List<Employee> employees = staffService.findByDepartment(department);
 
                 if (employees == null || employees.isEmpty()) {
@@ -31,6 +32,7 @@ public class EmployeeDisplayManager extends StaffManager {
                     print(employees);
                 }
             } else if ("4".equals(userSelection)) {
+                System.out.println("Enter id of an employee: ");
                 int id = Integer.parseInt(scanner.nextLine());
 
                 try {
@@ -40,15 +42,18 @@ public class EmployeeDisplayManager extends StaffManager {
                     System.out.println("There is no employee with ID " + id);
                 }
             } else if ("5".equals(userSelection)) {
+                System.out.println("Enter employee name: ");
                 String name = scanner.nextLine();
 
-                try {
-                    List<Employee> employees = staffService.findByName(name);
-                    for (Employee e : employees) {
-                        System.out.println(e);
-                    }
-                } catch (EntityNotFoundException e) {
+                List<Employee> employees = staffService.findByName(name);
+
+                if (employees == null || employees.isEmpty()) {
                     System.out.println("There is no employee with the name " + name);
+                    continue;
+                }
+
+                for (Employee e : employees) {
+                    System.out.println(e);
                 }
             } else if ("6".equals(userSelection)) {
                 return true;

@@ -1,6 +1,7 @@
 package com.sirma.staff.managemen.system.manager.employee;
 
 import com.sirma.staff.managemen.system.models.Employee;
+import com.sirma.staff.managemen.system.services.DateParser;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -38,6 +39,6 @@ public class EmployeeOnboardManager extends StaffManager {
     }
 
     private LocalDate readStartDate() {
-        return readLocalDate(scanner, "dd/MM/yyyy", "Start date");
+        return readLocalDate(scanner, DateParser.DATE_FORMAT_STRING, "Start date");
     }
 }

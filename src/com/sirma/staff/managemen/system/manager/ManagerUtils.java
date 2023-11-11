@@ -1,7 +1,8 @@
 package com.sirma.staff.managemen.system.manager;
 
+import com.sirma.staff.managemen.system.services.DateParser;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -18,15 +19,14 @@ public class ManagerUtils {
     }
 
     public static LocalDate readLocalDate(Scanner scanner, String datePattern, String label) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(datePattern);
 
         while (true) {
             try {
                 System.out.println("Enter " + label + " in the format " + datePattern + ": ");
-                LocalDate startDate = LocalDate.parse(scanner.nextLine(), formatter);
+                LocalDate startDate = DateParser.parseLocalDate(scanner.nextLine());
                 return startDate;
             } catch (DateTimeParseException e) {
-                System.out.println("Invalid date. Date format should be dd/mm/yyyy");
+                System.out.println("Invalid date. Date format should be dd/MM/yyyy");
             }
         }
     }

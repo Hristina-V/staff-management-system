@@ -3,6 +3,7 @@ package com.sirma.staff.managemen.system.repositories.csv.employee;
 import com.sirma.staff.managemen.system.models.Employee;
 import com.sirma.staff.managemen.system.repositories.FileConstants;
 import com.sirma.staff.managemen.system.repositories.csv.CsvFileWriter;
+import com.sirma.staff.managemen.system.services.DateParser;
 
 import static com.sirma.staff.managemen.system.repositories.FileConstants.EMPLOYEE_CSV_FILE_PATH;
 
@@ -19,7 +20,7 @@ public class EmployeeCsvFileWriter extends CsvFileWriter<Employee> {
                 .append(FileConstants.CSV_DELIMITER)
                 .append(employee.getName())
                 .append(FileConstants.CSV_DELIMITER)
-                .append(employee.getStartDate())
+                .append(DateParser.formatLocalDateAsString(employee.getStartDate()))
                 .append(FileConstants.CSV_DELIMITER)
                 .append(employee.getDepartment())
                 .append(FileConstants.CSV_DELIMITER)
