@@ -26,7 +26,7 @@ public class EmployeeOnboardManager extends StaffManager {
 
         double salary = readDoubleFromConsole(scanner, "salary");
 
-        Employee newEmployee = new Employee(name.trim(), startDate, department.trim(), role.trim(), salary);
+        Employee newEmployee = new Employee(0, name.trim(), startDate, department.trim(), role.trim(), salary, true);
 
         service.create(newEmployee);
 

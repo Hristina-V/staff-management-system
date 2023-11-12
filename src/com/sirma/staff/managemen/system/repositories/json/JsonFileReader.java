@@ -21,12 +21,18 @@ public class JsonFileReader<T> extends FileReader<T> {
 
     public List<T> readFromFile() {
         try {
-            TypeFactory typeFactory = objectMapper.getTypeFactory();
-            TypeReference<List<T>> typeReference = new TypeReference<List<T>>() {};
-            return objectMapper.readValue(new File(filePath), typeFactory.constructType(typeReference.getType()));
+            return getObjectMapper().readValue(getFile(), new TypeReference<List<T>>() {});
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            throw new RuntimeException("Something happened");
         }
+    }
+
+    protected File getFile() {
+        return new File(filePath);
+    }
+
+    protected ObjectMapper getObjectMapper() {
+        return objectMapper;
     }
 }

@@ -1,7 +1,11 @@
 package com.sirma.staff.managemen.system.models;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,6 +13,8 @@ public class Employee extends BaseEntity implements Serializable {
 
     private String name;
 
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate startDate;
 
     private String department;
@@ -17,19 +23,11 @@ public class Employee extends BaseEntity implements Serializable {
 
     private double salary;
 
+    @JsonProperty("isActive")
     private boolean isActive;
 
     public Employee() {}
 
-    public Employee(String name, LocalDate startDate, String department, String role, double salary) {
-        this(0, name, startDate, department, role, salary);
-    }
-
-    public Employee(int id, String name, LocalDate startDate, String department, String role, double salary) {
-        this(id, name, startDate, department, role, salary, true);
-    }
-
-    @JsonCreator
     public Employee(int id,
                     String name,
                     LocalDate startDate,

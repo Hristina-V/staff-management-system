@@ -13,12 +13,12 @@ import com.sirma.staff.managemen.system.services.StaffService;
 public abstract class StaffManager extends Manager {
 
     // Change to EmployeeCsvFileReader if you would like to change persistence layer to CSV file
-    private static final FileReader<Employee> reader = new EmployeeCsvFileReader();
-    //private static final FileReader<Employee> reader = new EmployeeJsonFileReader();
+//    private static final FileReader<Employee> reader = new EmployeeCsvFileReader();
+    private static final FileReader<Employee> reader = new EmployeeJsonFileReader();
 
     // Change to EmployeeCsvFileWriter if you would like to change persistence layer to CSV file
-//    private static final FileWriter<Employee> writer = new EmployeeJsonFileWriter();
-    private static final FileWriter<Employee> writer = new EmployeeCsvFileWriter();
+    private static final FileWriter<Employee> writer = new EmployeeJsonFileWriter();
+//    private static final FileWriter<Employee> writer = new EmployeeCsvFileWriter();
 
 
     public StaffManager() {
